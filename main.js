@@ -23,55 +23,55 @@ songs = [
     {
         name: 'Amadeus',
         singer: 'Euphoria',
-        path: './assets/music/n1.mp4',
+        path: './assets/music/n1.mp3',
         image: './assets/img/n1.png'
     },
     {
         name: 'ANH THÍCH EM',
         singer: 'Linh Hee',
-        path: './assets/music/n2.mkv',
+        path: './assets/music/n2.mp3',
         image: './assets/img/n2.png'
     },
     {
         name: 'Con Đường Bình Phàm',
         singer: 'TikTok',
-        path: './assets/music/n4.mp4',
+        path: './assets/music/n4.mp3',
         image: './assets/img/n4.png'
     },
     {
         name: 'Disfigure ',
         singer: 'NSC',
-        path: './assets/music/n5.mp4',
+        path: './assets/music/n5.mp3',
         image: './assets/img/n5.png'
     },
     {
         name: 'Jim Yosef - Eclipse',
         singer: 'NCS',
-        path: './assets/music/n6.mp4',
+        path: './assets/music/n6.mp3',
         image: './assets/img/n6.png'
     },
     {
         name: 'Jim Yosef - Link ',
         singer: 'NCS',
-        path: './assets/music/n7.mkv',
+        path: './assets/music/n7.mp3',
         image: './assets/img/n7.png'
     },
     {
         name: 'Julius Dreisig',
         singer: 'NCS',
-        path: './assets/music/n8.mkv',
+        path: './assets/music/n8.mp3',
         image: './assets/img/n8.png'
     },
     {
         name: 'Way Back Home',
         singer: 'SHAUN',
-        path: './assets/music/n9.mp4',
+        path: './assets/music/n9.mp3',
         image: './assets/img/n9.png'
     },
     {
         name: 'Fearless ',
         singer: 'NCS',
-        path: './assets/music/n10.mkv',
+        path: './assets/music/n10.mp3',
         image: './assets/img/n10.png'
     }
 ]
