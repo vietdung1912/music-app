@@ -159,12 +159,16 @@ audio.ontimeupdate = function() {
 
 audio.onended = function() {
     if (isRepeat) {
-        audio.play()
+        setCurrentSong()
     }
-    else if (isRepeat){
-
+    else if (isRandom){
+        randomSong()
+        setCurrentSong()
     }
-    console.log(isRepeat)
+    else {
+        nextSong()
+        setCurrentSong()
+    }
 }
 
 progress.onchange = function() {

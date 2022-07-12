@@ -20,7 +20,7 @@ html, body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 #root {
@@ -37,6 +37,7 @@ html, body {
     max-width: 350px;
     min-height: 600px;
     min-width: 350px;
+    border-radius: 16px;
     background-color: aqua;
 }
 
@@ -84,6 +85,10 @@ html, body {
 
 .btn-toggle-play i {
     font-size: 36px;
+    
+    /* background-color: black;
+    color: aqua;
+    border-radius: 8px; */
 }
 
 .progress {
