@@ -19,6 +19,10 @@ html, body {
     color: red;
 }
 
+.active {
+    background-color: rgb(231, 44, 75);
+}
+
 .hidden {
     display: none !important;
 }
@@ -43,13 +47,16 @@ html, body {
 
 .header {
     height: auto;
-
     width: 100%;
     text-align: center;
 }
 
 .header > div {
-    padding: 16px 24px;
+    padding: 8px 24px 0 24px;
+}
+
+.header-info div {
+    margin-top: 8px;
 }
 
 .content {
@@ -80,18 +87,46 @@ html, body {
 }
 
 .control i {
-    font-size: 24px;
+    font-size: 20px;
+}
+
+.control i:hover {
+    opacity: 0.8;
 }
 
 .btn-toggle-play i {
     font-size: 36px;
-    
-    /* background-color: black;
-    color: aqua;
-    border-radius: 8px; */
+    color: red;
 }
+
+/* .btn-volume {
+    position: relative;
+}
+
+.btn-volume input {
+    position: absolute;
+    top: 40%;
+    transform: rotate(270deg);
+} */
 
 .progress {
     width: 100%;
+}
+
+.footer {
+    padding: 0 16px;
+    overflow-y: auto;
+    height: 150px;
+}
+
+.list-song {
+    overflow-y: none;
+    overflow-x: hidden;
+}
+
+.footer {}
+
+.song {
+    margin: 8px 0;
 }
 

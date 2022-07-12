@@ -12,7 +12,7 @@
     <div id="root">
         <div id="app">
             <div class="header">
-                <div>
+                <div class="header-info">
                     <h2 class="name-song"></h2>
                     <div class="name-singer"></div>
                 </div>
@@ -26,6 +26,8 @@
                 </div>
                 <div class="action">
                     <div class="control">
+                        <div class="btn btn-volume-low">
+                            <i class="fa-solid fa-volume-low"></i>                        </div>
                         <div class="btn btn-repeat">
                             <i class="fa-solid fa-repeat"></i>
                         </div>
@@ -42,13 +44,18 @@
                         <div class="btn btn-shuffle">
                             <i class="fa-solid fa-shuffle"></i>
                         </div>
+                        <div class="btn btn-volume-high">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <!-- <input type="range"> -->
+                        </div>
                     </div>
                 </div>
                 <input class="progress" type="range" value="0" min="0" max="100">
                 <audio id="audio" src=""></audio>
             </div>
             <div class="footer">
-
+                <div class="list-song">
+                </div>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 const $ = document.querySelector.bind(document)
-const $$ = document.querySelector.bind(document)
+const $$ = document.querySelectorAll.bind(document)
 
 
 const nameSong = $('.name-song')
@@ -9,11 +9,14 @@ const btnRepeat = $('.btn-repeat')
 const btnRandom = $('.btn-shuffle')
 const prevBtn = $('.btn-backward')
 const nextBtn = $('.btn-forward')
+const volumeLowBtn = $('.btn-volume-low')
+const volumeHighBtn = $('.btn-volume-high')
 const audio = $('audio')
 const thumb= $('.cd-thumb')
 const progress = $('.progress')
+const listSong = $('.list-song')
 
-const button = $$('.btn-toggle-play')
+const button = $('.btn-toggle-play')
 
 // btnPlay.onclick() = function(audio) {
 //     audio.play()
@@ -89,6 +92,20 @@ const cdThumbAnimate = thumb.animate([
     iterations: Infinity
 })
 
+function renderSong() {
+    var htmls = songs.map((song, index) => {
+        return `
+            <div class="song ${index === currentIndex ? 'active' : ''}" data-index="${index}">
+                <h3 class="name">${song.name}</h3>
+                <div class="singer">${song.singer}</div>
+            </div>
+        `
+    })
+    listSong.innerHTML = htmls.join('')
+}
+
+renderSong()
+
 function setCurrentSong() {
     currentSong = songs[currentIndex]
     audio.src = currentSong.path
@@ -98,10 +115,21 @@ function setCurrentSong() {
     button.children[0].classList.add('hidden')
     button.children[1].classList.remove('hidden')
     audio.play()
+    audio.volume = 0.5
     cdThumbAnimate.play()
 }
 
+volumeLowBtn.onclick = function() {
+    if (audio.volume >= 0) {
+        audio.volume -= 0.1
+    }
+}
 
+volumeHighBtn.onclick = function() {
+    if (audio.volume < 1) {
+        audio.volume += 0.1
+    }
+}
 
 setCurrentSong()
 
@@ -112,6 +140,7 @@ prevBtn.onclick = function() {
     else {
         prevSong()
     }
+    renderSong()
     setCurrentSong()
 }
 
@@ -122,8 +151,11 @@ nextBtn.onclick = function() {
     else {
         nextSong()
     }
+    renderSong()
     setCurrentSong()
 }
+
+
 
 btnRepeat.onclick = function() {
     isRepeat = !isRepeat
@@ -150,6 +182,18 @@ btnTogglePlay.onclick = function() {
     button.children[1].classList.toggle('hidden')
 }
 
+listSong.onclick = function(e) {
+    const song = e.target.parentElement
+    const list = $$('.song')
+    console.log(list)
+    for (var item of list) {
+        item.classList.remove('active')
+    }
+    currentIndex = song.getAttribute("data-index")
+    song.classList.add('active')
+    setCurrentSong()
+}
+
 audio.ontimeupdate = function() {
     if (audio.duration) {
         const progressPercent = Math.floor(audio.currentTime / audio.duration * 100)
@@ -160,13 +204,16 @@ audio.ontimeupdate = function() {
 audio.onended = function() {
     if (isRepeat) {
         setCurrentSong()
+        renderSong()
     }
     else if (isRandom){
         randomSong()
+        renderSong()
         setCurrentSong()
     }
     else {
         nextSong()
+        renderSong()
         setCurrentSong()
     }
 }
@@ -193,3 +240,4 @@ function randomSong() {
     while (currentIndex === random)
     currentIndex = random
 }
+
