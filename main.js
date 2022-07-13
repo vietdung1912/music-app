@@ -120,15 +120,13 @@ function setCurrentSong() {
 }
 
 volumeLowBtn.onclick = function() {
-    if (audio.volume >= 0) {
-        audio.volume -= 0.1
-    }
+    const seekVolume = audio.volume - 0.1
+    audio.volume = seekVolume < 0 ? 0 : seekVolume
 }
 
 volumeHighBtn.onclick = function() {
-    if (audio.volume < 1) {
-        audio.volume += 0.1
-    }
+    const seekVolume = audio.volume + 0.1
+    audio.volume = seekVolume > 1 ? 1 : seekVolume
 }
 
 setCurrentSong()
