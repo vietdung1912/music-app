@@ -3,7 +3,6 @@ const $$ = document.querySelectorAll.bind(document)
 
 
 const nameSong = $('.name-song')
-const nameSinger = $('.name-singer')
 const btnTogglePlay = $('.btn-toggle-play')
 const btnRepeat = $('.btn-repeat')
 const btnRandom = $('.btn-shuffle')
@@ -16,72 +15,67 @@ const thumb= $('.cd-thumb')
 const progress = $('.progress')
 const listSong = $('.list-song')
 
-const button = $('.btn-toggle-play')
-
-// btnPlay.onclick() = function(audio) {
-//     audio.play()
-// }
-
 songs = [
     {
-        name: 'Amadeus',
-        singer: 'Euphoria',
+        name: 'Something Just Like This',
+        singer: 'The Chainsmokers & Coldplay',
         path: './assets/music/n1.mp3',
         image: './assets/img/n1.PNG'
     },
     {
-        name: 'ANH THÍCH EM',
-        singer: 'Linh Hee',
+        name: 'Reality',
+        singer: 'Lost Frequencies',
         path: './assets/music/n2.mp3',
         image: './assets/img/n2.PNG'
     },
     {
-        name: 'Con Đường Bình Phàm',
-        singer: 'TikTok',
+        name: 'Waiting For Love',
+        singer: 'Avicii',
+        path: './assets/music/n3.mp3',
+        image: './assets/img/n3.PNG'
+    },
+    {
+        name: 'The Nights ',
+        singer: 'Avicii',
         path: './assets/music/n4.mp3',
         image: './assets/img/n4.PNG'
     },
     {
-        name: 'Disfigure ',
-        singer: 'NSC',
+        name: 'See You Again',
+        singer: 'NCS',
         path: './assets/music/n5.mp3',
         image: './assets/img/n5.PNG'
     },
     {
-        name: 'Jim Yosef - Eclipse',
-        singer: 'NCS',
+        name: 'Way Back Home',
+        singer: 'SHAUN',
         path: './assets/music/n6.mp3',
         image: './assets/img/n6.PNG'
     },
     {
-        name: 'Jim Yosef - Link ',
-        singer: 'NCS',
+        name: 'Anh yêu em',
+        singer: 'Linh Hee',
         path: './assets/music/n7.mp3',
         image: './assets/img/n7.PNG'
     },
     {
-        name: 'Julius Dreisig',
-        singer: 'NCS',
+        name: 'Hai mươi hai',
+        singer: 'Amee x Hứa Kim Tuyền',
         path: './assets/music/n8.mp3',
         image: './assets/img/n8.PNG'
     },
     {
-        name: 'Way Back Home',
-        singer: 'SHAUN',
+        name: 'Có hẹn với thanh xuân ',
+        singer: 'MONSTAR',
         path: './assets/music/n9.mp3',
         image: './assets/img/n9.PNG'
-    },
-    {
-        name: 'Fearless ',
-        singer: 'NCS',
-        path: './assets/music/n10.mp3',
-        image: './assets/img/n10.PNG'
     }
 ]
 
-let isPlaying = true
+let isPlaying = false
 let isRepeat = false
 let isRandom = false
+let chooseSong = false
 let currentIndex = 0
 let currentSong
 
@@ -104,19 +98,26 @@ function renderSong() {
     listSong.innerHTML = htmls.join('')
 }
 
-renderSong()
+function thumbAnimate() {
+    if (isPlaying ) {
+        cdThumbAnimate.play()
+        btnTogglePlay.children[0].classList.add('hidden')
+        btnTogglePlay.children[1].classList.remove('hidden')
+    }
+    else {
+        cdThumbAnimate.pause()
+        btnTogglePlay.children[0].classList.remove('hidden')
+        btnTogglePlay.children[1].classList.add('hidden')
+    }
+}
 
 function setCurrentSong() {
     currentSong = songs[currentIndex]
     audio.src = currentSong.path
     nameSong.innerHTML = currentSong.name
-    nameSinger.innerHTML = currentSong.singer
     thumb.style.backgroundImage = `url('${currentSong.image}')`
-    button.children[0].classList.add('hidden')
-    button.children[1].classList.remove('hidden')
-    audio.play()
     audio.volume = 0.5
-    cdThumbAnimate.play()
+    thumbAnimate()
 }
 
 volumeLowBtn.onclick = function() {
@@ -129,9 +130,8 @@ volumeHighBtn.onclick = function() {
     audio.volume = seekVolume > 1 ? 1 : seekVolume
 }
 
-setCurrentSong()
-
 prevBtn.onclick = function() {
+    isPlaying = true
     if (isRandom) {
         randomSong()
     }
@@ -143,6 +143,7 @@ prevBtn.onclick = function() {
 }
 
 nextBtn.onclick = function() {
+    isPlaying = true
     if (isRandom) {
         randomSong()
     }
@@ -152,8 +153,6 @@ nextBtn.onclick = function() {
     renderSong()
     setCurrentSong()
 }
-
-
 
 btnRepeat.onclick = function() {
     isRepeat = !isRepeat
@@ -176,14 +175,13 @@ btnTogglePlay.onclick = function() {
         cdThumbAnimate.play()
         isPlaying = true 
     }
-    button.children[0].classList.toggle('hidden')
-    button.children[1].classList.toggle('hidden')
+    thumbAnimate()
 }
 
 listSong.onclick = function(e) {
+    isPlaying = true
     const song = e.target.parentElement
     const list = $$('.song')
-    console.log(list)
     for (var item of list) {
         item.classList.remove('active')
     }
@@ -201,8 +199,8 @@ audio.ontimeupdate = function() {
 
 audio.onended = function() {
     if (isRepeat) {
-        setCurrentSong()
         renderSong()
+        setCurrentSong()
     }
     else if (isRandom){
         randomSong()
@@ -238,4 +236,5 @@ function randomSong() {
     while (currentIndex === random)
     currentIndex = random
 }
-
+renderSong()
+setCurrentSong()

@@ -21,6 +21,7 @@ html, body {
 
 .active {
     background-color: rgb(231, 44, 75);
+    color: #fff;
 }
 
 .hidden {
@@ -32,6 +33,8 @@ html, body {
     width: 100%;
     align-items: center;
     justify-content: center;
+    background: rgb(34,193,195);
+    background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(30,33,33,1) 68%);
 }
 
 #app {
@@ -42,7 +45,8 @@ html, body {
     min-height: 600px;
     min-width: 350px;
     border-radius: 16px;
-    background-color: aqua;
+    background-color: #00DBDE;
+    background-image: linear-gradient(45deg, #00DBDE 0%, #FC00FF 100%);
 }
 
 .header {
@@ -64,15 +68,19 @@ html, body {
 }
 
 .cd {
-    display: block;
+    /* display: flex; */
+    width: 200px;
+    /* height: 250px; */
+    margin: auto;
 }
 
 .cd-thumb {
-    width: 250px;
-    height: 250px;
+
+    width: 100%;
+    /* height: 100%; */
+    padding-top: 100%;
     border-radius: 50%;
     /* background-color: rebeccapurple; */
-    margin: auto;
 }
 
 .action {
@@ -116,7 +124,7 @@ html, body {
 .footer {
     padding: 0 16px;
     overflow-y: auto;
-    height: 150px;
+    height: 179px;
 }
 
 .list-song {
@@ -124,9 +132,8 @@ html, body {
     overflow-x: hidden;
 }
 
-.footer {}
-
 .song {
-    margin: 8px 0;
+    padding: 8px 8px;
+    border-radius: 8px
 }
 
