@@ -20,8 +20,8 @@ html, body {
 }
 
 .active {
-    background-color: rgb(231, 44, 75);
-    color: #fff;
+    background-color:#00DBDE;
+    color: #000 !important;
 }
 
 .hidden {
@@ -46,13 +46,17 @@ html, body {
     min-width: 350px;
     border-radius: 16px;
     background-color: #00DBDE;
-    background-image: linear-gradient(45deg, #00DBDE 0%, #FC00FF 100%);
+    background-image: linear-gradient(135deg, #00DBDE 0%, #FC00FF 100%);
 }
 
 .header {
     height: auto;
     width: 100%;
     text-align: center;
+}
+.heading {
+    color: red;
+    font-size: 20px;
 }
 
 .header > div {
@@ -134,6 +138,7 @@ html, body {
 
 .song {
     padding: 8px 8px;
-    border-radius: 8px
+    border-radius: 8px;
+    color: #fff;
 }
 
